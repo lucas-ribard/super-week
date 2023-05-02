@@ -11,11 +11,11 @@ $router->map( 'GET', '/', function() {
 });
 
 $router->map( 'GET', '/users', function() {
-    echo 'Bienvenu sur la liste des Utilisateurs';
+    echo 'Bienvenue sur la liste des Utilisateurs';
 });
 
 $router->map( 'GET', '/users/1', function() {
-    echo 'Bienvenu sur la page de l’utilisateur 1';
+    echo 'Bienvenue sur la page de l’utilisateur 1';
 });
 
 
