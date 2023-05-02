@@ -7,8 +7,17 @@ $router->setBasePath('/super-week');
 
 //Maps
 $router->map( 'GET', '/', function() {
-    echo 'hello';
+    echo 'Bienvenue sur l\'acceuil';
 });
+
+$router->map( 'GET', '/users', function() {
+    echo 'Bienvenu sur la liste des Utilisateurs';
+});
+
+$router->map( 'GET', '/users/1', function() {
+    echo 'Bienvenu sur la page de l’utilisateur 1';
+});
+
 
 //match Router
 $match = $router->match();
