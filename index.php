@@ -11,7 +11,9 @@ $router->map('GET', '/', function () {
 });
 
 $router->map('GET', '/users', function () {
-    echo 'Bienvenue sur la liste des Utilisateurs';
+    $UserController = new UserController;
+    $list_users=$UserController->list();
+    echo $list_users;
 });
 
 $router->map('GET', '/users/1', function () {
@@ -19,8 +21,7 @@ $router->map('GET', '/users/1', function () {
 });
 
 $router->map('GET', '/users/test', function () {
-    $UserController = new UserController;
-    $UserController->fill();
+    
 
 });
 

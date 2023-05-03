@@ -4,8 +4,10 @@ namespace App\Controller;
 use App\Model\UserModel;
 
 class UserController{
-    public function fill(){
+    public function list(){
         $UserModel = new UserModel;
-        $UserModel->insert();
+        $UserModel = json_encode($UserModel->findAll());
+        return $UserModel;
+
     }
 }
