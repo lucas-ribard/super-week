@@ -5,6 +5,15 @@ use App\Controller\UserController;
 //set base 
 $router->setBasePath('/super-week');
 
+//démare la sessions
+session_start();
+//si un user est connecté un message d'acceuils s'affiche
+if (isset($_SESSION['username'])){
+    echo 'Connecté en tant que '.$_SESSION['username'].'<br>';
+}
+echo '<a href="/super-week/users"> /super-week/users </a><br>';
+echo '<a href="/super-week/users/register"> /super-week/users/register </a><br>';
+echo '<a href="/super-week/users/login"> /super-week/users/login </a><br><br><br>';
 //Maps
 $router->map('GET', '/', function () {
     echo 'Bienvenue sur l\'acceuil';
@@ -29,6 +38,18 @@ $router->map('POST', '/users/register', function () {
     $UserController = new UserController;
     $UserController->register();
     header('location:/super-week/users');
+});
+
+
+$router->map('GET', '/users/login', function () {
+    require_once "src/View/login.php";
+
+});
+
+$router->map('POST', '/users/login', function () {
+    $UserController = new UserController;
+    $UserController->login();
+   
 });
 
 
