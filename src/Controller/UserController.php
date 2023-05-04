@@ -10,4 +10,10 @@ class UserController{
         return $UserModel;
 
     }
+
+    public function register(){
+        $UserModel = new UserModel;
+        return $UserModel->register();
+        
+    }
 }

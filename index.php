@@ -20,10 +20,18 @@ $router->map('GET', '/users/1', function () {
     echo 'Bienvenue sur la page de l’utilisateur 1';
 });
 
-$router->map('GET', '/users/test', function () {
-    
+$router->map('GET', '/users/register', function () {
+    require_once "src/View/register.php";
 
 });
+
+$router->map('POST', '/users/register', function () {
+    $UserController = new UserController;
+    $UserController->register();
+    header('location:/super-week/users');
+});
+
+
 
 
 //match Router
