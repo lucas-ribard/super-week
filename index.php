@@ -27,8 +27,8 @@ $router->map('GET', '/users/register', function () {
 
 $router->map('POST', '/users/register', function () {
     $UserController = new UserController;
-    echo $UserController->register();
-
+    $UserController->register();
+    header('location:/super-week/users');
 });
 
 

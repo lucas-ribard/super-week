@@ -11,7 +11,7 @@ class UserModel
 
         $bdd = new PDO('mysql:host=localhost;dbname=Super-Week', 'root', '');
 
-        $sql = 'SELECT * FROM user ';
+        $sql = 'SELECT `id`, `username`,  `email`, `first_name`, `last_name` FROM user ';
 
         $request = $bdd->prepare($sql);
         $request->execute();
