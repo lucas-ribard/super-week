@@ -57,6 +57,22 @@ class BookModel
 
     }
 
-   
+    public function SeeBookInfo($id)
+    {
+
+        $bdd = new PDO('mysql:host=localhost;dbname=Super-Week', 'root', '');
+
+        $sql = 'SELECT * FROM book where id = :id';
+
+        $request = $bdd->prepare($sql);
+        $request->bindValue(':id', $id);
+        $request->execute();
+
+        $list_Books = $request->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($list_categ);
+        return $list_Books;
+
+    }
 
 }
+
