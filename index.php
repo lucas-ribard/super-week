@@ -54,7 +54,7 @@ $router->map('POST', '/users/login', function () {
    
 });
 
-$router->map('GET', '/users/logout', function () {
+$router->map('GET','/users/logout', function () {
     session_destroy();
     header("location:/super-week/");
 });

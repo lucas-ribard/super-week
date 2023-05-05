@@ -1,4 +1,4 @@
-<a href="/super-week/"> Retour à l'Acceuil</a>
+
 <form method="post">
     <input name="username" placeholder="Nom d'utilisateur" required></input><br>
     <input name="nom" placeholder="Nom" required></input><br>
