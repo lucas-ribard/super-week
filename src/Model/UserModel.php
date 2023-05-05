@@ -51,8 +51,46 @@ class UserModel
             return $request->execute();
         }
         else {
-            return "Ce nom d'utilisateur est déja utilisé";
+            echo "Ce nom d'utilisateur est déja utilisé<br>";
+            echo '<a href="/super-week/"> Retour à l\'Acceuil</a>';
         }
 
     }
+
+    public function login()
+    {
+        //init bdd
+        $bdd = new PDO('mysql:host=localhost;dbname=Super-Week', 'root', '');
+
+        //check if user exist
+        $sql = 'SELECT * FROM user WHERE username = :username AND password = :password';
+        $request = $bdd->prepare($sql);
+        $request->bindValue(':username', $_POST['username']);
+        $request->bindValue(':password', $_POST['password']);
+        $request->execute();
+
+        $UserInfo = $request->fetch(PDO::FETCH_ASSOC);
+
+        
+        //si l'user est disponible
+        if (!empty($UserInfo)) {
+            $_SESSION['id']=$UserInfo['id'];
+            $_SESSION['username']=$UserInfo['username'];
+            $_SESSION['email']=$UserInfo['email'];
+            $_SESSION['first_name']=$UserInfo['first_name'];
+            $_SESSION['last_name']=$UserInfo['last_name'];
+            header("location:/super-week/");
+           
+        }
+        else {
+            echo "Votre user ou mot de passe n'est pas correct<br>";
+            echo '<a href="/super-week/"> Retour à l\'Acceuil</a>';
+           
+        }
+
+    }
+
+
+
+
 }

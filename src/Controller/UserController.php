@@ -16,4 +16,10 @@ class UserController{
         return $UserModel->register();
         
     }
+
+    public function login(){
+        $UserModel = new UserModel;
+        return $UserModel->login();
+        
+    }
 }
