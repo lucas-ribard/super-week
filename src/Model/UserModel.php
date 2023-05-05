@@ -79,8 +79,7 @@ class UserModel
             $_SESSION['email']=$UserInfo['email'];
             $_SESSION['first_name']=$UserInfo['first_name'];
             $_SESSION['last_name']=$UserInfo['last_name'];
-            echo "Bienvenue ".$UserInfo['username']."<br>";
-            echo '<a href="/super-week/"> Retour à l\'Acceuil</a>';
+            header("location:/super-week/");
            
         }
         else {

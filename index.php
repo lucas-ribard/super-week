@@ -13,7 +13,8 @@ if (isset($_SESSION['username'])){
 }
 echo '<a href="/super-week/users"> /super-week/users </a><br>';
 echo '<a href="/super-week/users/register"> /super-week/users/register </a><br>';
-echo '<a href="/super-week/users/login"> /super-week/users/login </a><br><br><br>';
+echo '<a href="/super-week/users/login"> /super-week/users/login </a><br>';
+echo '<a href="/super-week/users/logoff">déconnecter </a><br><br>';
 //Maps
 $router->map('GET', '/', function () {
     echo 'Bienvenue sur l\'acceuil';
@@ -51,6 +52,12 @@ $router->map('POST', '/users/login', function () {
     $UserController->login();
    
 });
+
+$router->map('GET', '/users/logoff', function () {
+    session_destroy();
+    header("location:/super-week/");
+});
+
 
 
 
