@@ -63,6 +63,13 @@ $router->map('GET', '/users/[i:id]', function ($id) {
     echo $UserController->seeUserInfo($id);
 });
 
+$router->map('GET', '/books', function () {
+    $UserController = new BookController;
+    echo $UserController->findAll();
+   
+   
+});
+
 $router->map('GET', '/books/write', function () {
     require_once "src/View/BookWrite.php";
    
