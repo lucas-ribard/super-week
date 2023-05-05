@@ -90,7 +90,19 @@ class UserModel
 
     }
 
+    public function seeUserInfo($id)
+    {
+        //init bdd
+        $bdd = new PDO('mysql:host=localhost;dbname=Super-Week', 'root', '');
 
+        //check if user exist
+        $sql = 'SELECT * FROM user WHERE id = :id';
+        $request = $bdd->prepare($sql);
+        $request->bindValue(':id', $id);
+        $request->execute();
 
+        return $request->fetch(PDO::FETCH_ASSOC);
+
+    }
 
 }
