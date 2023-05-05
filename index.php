@@ -1,4 +1,5 @@
 <?php
+use App\Controller\BookController;
 require __DIR__ . '/vendor/autoload.php';
 $router = new AltoRouter();
 use App\Controller\UserController;
@@ -11,10 +12,12 @@ session_start();
 if (isset($_SESSION['username'])){
     echo 'Connecté en tant que '.$_SESSION['username'].'<br>';
 }
+echo '<a href="/super-week"> /super-week </a><br>';
 echo '<a href="/super-week/users"> /super-week/users </a><br>';
 echo '<a href="/super-week/users/register"> /super-week/users/register </a><br>';
 echo '<a href="/super-week/users/login"> /super-week/users/login </a><br>';
-echo '<a href="/super-week/users/logoff">déconnecter </a><br><br>';
+echo '<a href="/super-week/users/logout">/super-week/users/logout </a><br>';
+echo '<a href="/super-week/books/write">/super-week/books/write </a><br><br>';
 //Maps
 $router->map('GET', '/', function () {
     echo 'Bienvenue sur l\'acceuil';
@@ -50,7 +53,7 @@ $router->map('POST', '/users/login', function () {
    
 });
 
-$router->map('GET', '/users/logoff', function () {
+$router->map('GET', '/users/logout', function () {
     session_destroy();
     header("location:/super-week/");
 });
@@ -60,6 +63,16 @@ $router->map('GET', '/users/[i:id]', function ($id) {
     echo $UserController->seeUserInfo($id);
 });
 
+$router->map('GET', '/books/write', function () {
+    require_once "src/View/BookWrite.php";
+   
+});
+
+$router->map('POST', '/books/write', function () {
+    $UserController = new BookController;
+    $UserController->writeBook();
+   
+});
 
 
 
