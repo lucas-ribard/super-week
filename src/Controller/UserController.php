@@ -22,4 +22,11 @@ class UserController{
         return $UserModel->login();
         
     }
+
+    public function seeUserInfo($id){
+        $UserModel = new UserModel;
+        return json_encode($UserModel->seeUserInfo($id)) ;
+        
+    }
 }
+
