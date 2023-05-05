@@ -65,21 +65,23 @@ $router->map('GET', '/users/[i:id]', function ($id) {
 });
 
 $router->map('GET', '/books', function () {
-    $UserController = new BookController;
-    echo $UserController->findAll();
-   
-   
+    $BookController = new BookController;
+    echo $BookController->findAll();
 });
 
 $router->map('GET', '/books/write', function () {
     require_once "src/View/BookWrite.php";
-   
 });
 
 $router->map('POST', '/books/write', function () {
-    $UserController = new BookController;
-    $UserController->writeBook();
+    $BookController = new BookController;
+    $BookController->writeBook();
    
+});
+
+$router->map('GET', '/books/[i:id]', function ($id) {
+    $BookController = new BookController;
+    echo $BookController->seeUserInfo($id);
 });
 
 
