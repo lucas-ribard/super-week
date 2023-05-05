@@ -11,14 +11,14 @@ class BookModel
 
         $bdd = new PDO('mysql:host=localhost;dbname=Super-Week', 'root', '');
 
-        $sql = 'SELECT `* FROM book ';
+        $sql = 'SELECT * FROM book ';
 
         $request = $bdd->prepare($sql);
         $request->execute();
 
-        $list_users = $request->fetchAll(PDO::FETCH_ASSOC);
+        $list_Books = $request->fetchAll(PDO::FETCH_ASSOC);
         // var_dump($list_categ);
-        return $list_users;
+        return $list_Books;
 
     }
     public function writeBook()

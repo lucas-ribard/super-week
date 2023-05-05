@@ -17,6 +17,7 @@ echo '<a href="/super-week/users"> /super-week/users </a><br>';
 echo '<a href="/super-week/users/register"> /super-week/users/register </a><br>';
 echo '<a href="/super-week/users/login"> /super-week/users/login </a><br>';
 echo '<a href="/super-week/users/logout">/super-week/users/logout </a><br>';
+echo '<a href="/super-week/books">/super-week/books </a><br>';
 echo '<a href="/super-week/books/write">/super-week/books/write </a><br><br>';
 //Maps
 $router->map('GET', '/', function () {
@@ -61,6 +62,13 @@ $router->map('GET', '/users/logout', function () {
 $router->map('GET', '/users/[i:id]', function ($id) {
     $UserController = new UserController;
     echo $UserController->seeUserInfo($id);
+});
+
+$router->map('GET', '/books', function () {
+    $UserController = new BookController;
+    echo $UserController->findAll();
+   
+   
 });
 
 $router->map('GET', '/books/write', function () {
