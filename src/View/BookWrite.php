@@ -1,6 +1,6 @@
 <form method="post">
     <input name="title" placeholder="Titre" required></input><br>
-    <textarea name="content" rows="5" cols="33" required></textarea><br>
+    <textarea name="content" rows="5" cols="33" placeholder="Contenu du livre" required></textarea><br>
     <?php 
     if (isset($_SESSION['username'])){
         echo '<input name="id_user" value="'.$_SESSION['id'].'" hidden/>';
