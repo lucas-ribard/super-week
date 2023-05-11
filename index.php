@@ -1,8 +1,10 @@
 <?php
 use App\Controller\BookController;
+
 require __DIR__ . '/vendor/autoload.php';
 $router = new AltoRouter();
 use App\Controller\UserController;
+
 //set base 
 $router->setBasePath('/super-week');
 
@@ -14,12 +16,14 @@ session_start();
 
 //Maps
 $router->map('GET', '/', function () {
+    $UserController = new UserController;
+    $BookController = new BookController;
     require_once "src/View/index.php";
 });
 
 $router->map('GET', '/users', function () {
     $UserController = new UserController;
-    $list_users=$UserController->list();
+    $list_users = $UserController->list();
     echo $list_users;
 });
 
@@ -44,10 +48,10 @@ $router->map('GET', '/users/login', function () {
 $router->map('POST', '/users/login', function () {
     $UserController = new UserController;
     $UserController->login();
-   
+
 });
 
-$router->map('GET','/users/logout', function () {
+$router->map('GET', '/users/logout', function () {
     session_destroy();
     header("location:/super-week/");
 });
@@ -69,7 +73,7 @@ $router->map('GET', '/books/write', function () {
 $router->map('POST', '/books/write', function () {
     $BookController = new BookController;
     $BookController->writeBook();
-   
+
 });
 
 $router->map('GET', '/books/[i:id]', function ($id) {
