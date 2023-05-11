@@ -1,4 +1,13 @@
 <script defer src=index.js></script>
+<?php
+
+$AllUsers = $UserController->list();
+$AllUsers = json_decode($AllUsers, true);
+
+$AllBooks = $BookController->findAll();
+$AllBooks = json_decode($AllBooks, true);
+
+?>
 <br>
 <button id="BTusers" onclick="FetchContent('users')">tout les users</button>
 <button id="BTusers" onclick="FetchContent('books')">tout les livres</button>
@@ -6,17 +15,20 @@
 
 
 <select id="users">
-<!-- foreach user -->
-<option>1</option>
-<option>2</option>
-<option>3</option>
+    <?php
+    foreach ($AllUsers as $user) {
+        echo "<option value='" . $user['id'] . "'>" . $user['username'] . "</option>";
+    }
+    ?>
 </select>
 <button id="BTusers" onclick="FetchContentWithId('users')">Voir cet utilisateur</button>
 <!-- foreach book -->
 <select id="books">
-<option>1</option>
-<option>2</option>
-<option>3</option>
+<?php
+    foreach ($AllBooks as $book) {
+        echo "<option value='" . $book['id'] . "'>" . $book['title'] . "</option>";
+    }
+    ?>
 </select>
 <button id="BTusers" onclick="FetchContentWithId('books')">Voir ce Livre</button>
 
